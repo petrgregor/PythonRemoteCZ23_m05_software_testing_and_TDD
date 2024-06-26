@@ -10,13 +10,16 @@ def test_get_avg():
     """
 
     fake_get_data = MagicMock(return_value="1")
+    #fake_get_data._get_data.return_value = "1"
     with patch('p06_Exercise_4._get_data', fake_get_data):
         assert get_avg(1) == 1
 
     fake_get_data = MagicMock(return_value="12")
+    #fake_get_data._get_data.return_value = "12"
     with patch('p06_Exercise_4._get_data', fake_get_data):
         assert get_avg(2) == 1.5
 
     fake_get_data = MagicMock(return_value="123")
+    #fake_get_data._get_data.return_value = "123"
     with patch('p06_Exercise_4._get_data', fake_get_data):
         assert get_avg(3) == 2
