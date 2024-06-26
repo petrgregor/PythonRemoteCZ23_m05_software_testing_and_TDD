@@ -1,5 +1,5 @@
 from unittest.mock import patch, MagicMock
-from p03_get_only_numbers import get_only_numbers, API
+from p03_get_only_numbers import get_only_numbers
 
 
 def test_read_only_numbers():

@@ -26,10 +26,15 @@ from p02_ComplexNumber import *
 def test_init():
     with pytest.raises(Exception):
         assert ComplexNumber("Hi", 2)
+    with pytest.raises(Exception):
         assert ComplexNumber(5, "ahoj")
+    with pytest.raises(Exception):
         assert ComplexNumber("hello", "world")
+    with pytest.raises(Exception):
         assert ComplexNumber(4, None)
+    with pytest.raises(Exception):
         assert ComplexNumber(None, -1)
+    with pytest.raises(Exception):
         assert ComplexNumber(None, None)
 
     complex_number1 = ComplexNumber(0, 0)
@@ -56,7 +61,9 @@ def test_re():
     assert complex_number1.re == 6
     with pytest.raises(Exception):
         complex_number1.re = "Hi"
+    with pytest.raises(Exception):
         complex_number1.re = None
+    with pytest.raises(Exception):
         complex_number1.re = []
 
 
@@ -67,7 +74,10 @@ def test_img():
     assert complex_number1.img == -1
     with pytest.raises(Exception):
         complex_number1.img = "Hi"
+    with pytest.raises(Exception):
         complex_number1.img = None
+    with pytest.raises(Exception):
+        complex_number1.img = []
 
 
 def test_str():
@@ -85,6 +95,23 @@ def test_str():
     assert complex_number5.__str__() == "-3i"
     assert complex_number6.__str__() == "0"
     assert complex_number7.__str__() == "-i"
+
+
+def test_repr():
+    complex_number1 = ComplexNumber(3, 2)
+    complex_number2 = ComplexNumber(4, -1)
+    complex_number3 = ComplexNumber(-4, -2)
+    complex_number4 = ComplexNumber(4, 0)
+    complex_number5 = ComplexNumber(0, -3)
+    complex_number6 = ComplexNumber(0, 0)
+    complex_number7 = ComplexNumber(0, -1)
+    assert complex_number1.__repr__() == "ComplexNumber(re=3, img=2)"
+    assert complex_number2.__repr__() == "ComplexNumber(re=4, img=-1)"
+    assert complex_number3.__repr__() == "ComplexNumber(re=-4, img=-2)"
+    assert complex_number4.__repr__() == "ComplexNumber(re=4, img=0)"
+    assert complex_number5.__repr__() == "ComplexNumber(re=0, img=-3)"
+    assert complex_number6.__repr__() == "ComplexNumber(re=0, img=0)"
+    assert complex_number7.__repr__() == "ComplexNumber(re=0, img=-1)"
 
 
 def test_addition():
@@ -144,3 +171,9 @@ def test_lt():
     complex_number1 = ComplexNumber(2)
     complex_number2 = ComplexNumber(img_part=5)
     assert complex_number1 < complex_number2
+
+
+def test_gt():
+    complex_number1 = ComplexNumber(2)
+    complex_number2 = ComplexNumber(img_part=5)
+    assert complex_number2 > complex_number1
